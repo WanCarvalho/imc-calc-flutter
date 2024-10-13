@@ -44,34 +44,34 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
             child: Row(
               children: [
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
+                  child: CardPadrao(
+                    aoPressionar: () {
                       setState(() {
                         sexoSelecionado = Sexo.masculino;
                       });
                     },
-                    child: CardPadrao(
-                      cor: sexoSelecionado == Sexo.masculino ? corMasculinoAtivaCardPadrao : corMasculinoInativaCardPadrao,
-                      filhoCartao: ConteudoIcone(
-                        icone: FontAwesomeIcons.mars,
-                        descricao: 'MASCULINO',
-                      ),
+                    cor: sexoSelecionado == Sexo.masculino
+                        ? corMasculinoAtivaCardPadrao
+                        : corMasculinoInativaCardPadrao,
+                    filhoCartao: ConteudoIcone(
+                      icone: FontAwesomeIcons.mars,
+                      descricao: 'MASCULINO',
                     ),
                   ),
                 ),
                 Expanded(
-                  child: GestureDetector(
-                    onTap: (){
+                  child: CardPadrao(
+                    aoPressionar: () {
                       setState(() {
                         sexoSelecionado = Sexo.feminino;
                       });
                     },
-                    child: CardPadrao(
-                      cor: sexoSelecionado == Sexo.feminino ? corFemininoAtivaCardPadrao : corFemininoInativaCardPadrao,
-                      filhoCartao: ConteudoIcone(
-                        icone: FontAwesomeIcons.venus,
-                        descricao: 'FEMININO',
-                      ),
+                    cor: sexoSelecionado == Sexo.feminino
+                        ? corFemininoAtivaCardPadrao
+                        : corFemininoInativaCardPadrao,
+                    filhoCartao: ConteudoIcone(
+                      icone: FontAwesomeIcons.venus,
+                      descricao: 'FEMININO',
                     ),
                   ),
                 ),
