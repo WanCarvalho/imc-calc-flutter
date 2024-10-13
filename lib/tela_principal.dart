@@ -1,4 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'card_padrao.dart';
+import 'conteudo_icone.dart';
+
+const alturaContainerInferior = 80.0;
+const corCardPadrao = Color(0xFFE9E9E9);
+const corContainerInferior = Color(0xFFFF5822);
 
 class TelaPrincipal extends StatefulWidget {
   @override
@@ -25,47 +32,44 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
             child: Row(
               children: [
                 Expanded(
-                  child: CardPadrao(cor: const Color(0xFFE9E9E9))
+                  child: CardPadrao(
+                    cor: corCardPadrao,
+                    filhoCartao: ConteudoIcone(
+                      icone: FontAwesomeIcons.mars,
+                      descricao: 'MASCULINO',
+                    ),
+                  ),
                 ),
                 Expanded(
-                  child: CardPadrao(cor: const Color(0xFFE9E9E9))
+                  child: CardPadrao(
+                    cor: corCardPadrao,
+                    filhoCartao: ConteudoIcone(
+                      icone: FontAwesomeIcons.venus,
+                      descricao: 'FEMININO',
+                    ),
+                  ),
                 ),
               ],
             ),
           ),
-          Expanded(
-            child: CardPadrao(cor: const Color(0xFFE9E9E9))
-          ),
+          Expanded(child: CardPadrao(cor: corCardPadrao)),
           Expanded(
             child: Row(
               children: [
+                Expanded(child: CardPadrao(cor: corCardPadrao)),
                 Expanded(
-                  child: CardPadrao(cor: const Color(0xFFE9E9E9))
-                ),
-                Expanded(
-                  child: CardPadrao(cor: const Color(0xFFE9E9E9)),
+                  child: CardPadrao(cor: corCardPadrao),
                 ),
               ],
             ),
           ),
+          Container(
+            color: corContainerInferior,
+            margin: const EdgeInsets.only(top: 10),
+            width: double.infinity,
+            height: alturaContainerInferior,
+          ),
         ],
-      ),
-    );
-  }
-}
-
-class CardPadrao extends StatelessWidget {
-  CardPadrao({required this.cor});
-  
-  Color cor;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: cor,
       ),
     );
   }
