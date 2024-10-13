@@ -1,4 +1,4 @@
-# questao_3
+# IMC Calc
 
 A new Flutter project.
 
