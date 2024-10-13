@@ -8,7 +8,14 @@ const corCardPadrao = Color(0xFFE9E9E9);
 const corContainerInferior = Color(0xFFFF5822);
 
 const corMasculinoInativaCardPadrao = Colors.lightBlueAccent;
-const corFemininoInativaCardPadrao = const Color.fromARGB(255, 236, 87, 137);
+const corFemininoInativaCardPadrao = Color.fromARGB(255, 236, 87, 137);
+const corMasculinoAtivaCardPadrao = Color.fromARGB(255, 22, 138, 192);
+const corFemininoAtivaCardPadrao = Color.fromARGB(255, 209, 43, 98);
+
+enum Sexo {
+  masculino,
+  feminino,
+}
 
 class TelaPrincipal extends StatefulWidget {
   @override
@@ -16,28 +23,7 @@ class TelaPrincipal extends StatefulWidget {
 }
 
 class _TelaPrincipalState extends State<TelaPrincipal> {
-  Color corMasculinoCardPadrao = corMasculinoInativaCardPadrao;
-  Color corFemininoCardPadrao = corFemininoInativaCardPadrao;
-
-  // 1 -> masculino
-  // 2 -> feminino
-  void atualizarCor(int sexo) {
-    if (sexo == 1) { // checa se card masculino foi pressionado
-      if (corMasculinoCardPadrao == corMasculinoInativaCardPadrao) {
-        corMasculinoCardPadrao = const Color.fromARGB(255, 22, 138, 192);
-        corFemininoCardPadrao = corFemininoInativaCardPadrao;
-      } else {
-        corMasculinoCardPadrao = corMasculinoInativaCardPadrao;
-      }
-    } else if (sexo == 2) { // checa se card feminino foi pressionado
-      if (corFemininoCardPadrao == corFemininoInativaCardPadrao) {
-        corFemininoCardPadrao = const Color.fromARGB(255, 209, 43, 98);
-        corMasculinoCardPadrao = corMasculinoInativaCardPadrao;
-      } else {
-        corFemininoCardPadrao = corFemininoInativaCardPadrao;
-      }
-    }
-  }
+  Sexo? sexoSelecionado;
 
   @override
   Widget build(BuildContext context) {
@@ -61,11 +47,11 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        atualizarCor(1);
+                        sexoSelecionado = Sexo.masculino;
                       });
                     },
                     child: CardPadrao(
-                      cor: corMasculinoCardPadrao,
+                      cor: sexoSelecionado == Sexo.masculino ? corMasculinoAtivaCardPadrao : corMasculinoInativaCardPadrao,
                       filhoCartao: ConteudoIcone(
                         icone: FontAwesomeIcons.mars,
                         descricao: 'MASCULINO',
@@ -77,11 +63,11 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                   child: GestureDetector(
                     onTap: (){
                       setState(() {
-                        atualizarCor(2);
+                        sexoSelecionado = Sexo.feminino;
                       });
                     },
                     child: CardPadrao(
-                      cor: corFemininoCardPadrao,
+                      cor: sexoSelecionado == Sexo.feminino ? corFemininoAtivaCardPadrao : corFemininoInativaCardPadrao,
                       filhoCartao: ConteudoIcone(
                         icone: FontAwesomeIcons.venus,
                         descricao: 'FEMININO',
