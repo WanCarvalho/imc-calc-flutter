@@ -41,8 +41,3 @@ const corpoTextStyle = TextStyle(
 const alturaContainerInferior = 80.0;
 const corCardPadrao = Color(0xFFE9E9E9);
 const corContainerInferior = Color(0xFFFF5822);
-
-const corMasculinoInativaCardPadrao = Colors.lightBlueAccent;
-const corFemininoInativaCardPadrao = Color.fromARGB(255, 236, 87, 137);
-const corMasculinoAtivaCardPadrao = Color.fromARGB(255, 22, 138, 192);
-const corFemininoAtivaCardPadrao = Color.fromARGB(255, 209, 43, 98);

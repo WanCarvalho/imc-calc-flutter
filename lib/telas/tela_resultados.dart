@@ -7,11 +7,12 @@ class TelaResultados extends StatelessWidget {
   TelaResultados(
       {required this.resultadoIMC,
       required this.resultadoTexto,
-      required this.interpretacao});
+      required this.interpretacao, required this.resultadoImagem});
 
   final String resultadoIMC;
   final String resultadoTexto;
   final String interpretacao;
+  final String resultadoImagem;
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +61,11 @@ class TelaResultados extends StatelessWidget {
                     interpretacao,
                     textAlign: TextAlign.center,
                     style: corpoTextStyle,
+                  ),
+                  Image.asset(
+                    resultadoImagem, // Caminho para sua imagem
+                    width: 100, // Largura da imagem
+                    height: 100, // Altura da imagem
                   ),
                 ],
               ),

@@ -2,16 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:questao_3/telas/tela_resultados.dart';
 import '../components/card_padrao.dart';
-import '../components/conteudo_icone.dart';
 import '../constantes.dart';
 import '../components/botao_arredondado.dart';
 import '../components/botao_inferior.dart';
 import '../calculadora_imc.dart';
-
-enum Sexo {
-  masculino,
-  feminino,
-}
 
 class TelaPrincipal extends StatefulWidget {
   @override
@@ -19,7 +13,6 @@ class TelaPrincipal extends StatefulWidget {
 }
 
 class _TelaPrincipalState extends State<TelaPrincipal> {
-  Sexo? sexoSelecionado;
   int altura = 180;
   int peso = 60;
   int idade = 18;
@@ -40,44 +33,6 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Expanded(
-            child: Row(
-              children: [
-                Expanded(
-                  child: CardPadrao(
-                    aoPressionar: () {
-                      setState(() {
-                        sexoSelecionado = Sexo.masculino;
-                      });
-                    },
-                    cor: sexoSelecionado == Sexo.masculino
-                        ? corMasculinoAtivaCardPadrao
-                        : corMasculinoInativaCardPadrao,
-                    filhoCartao: ConteudoIcone(
-                      icone: FontAwesomeIcons.mars,
-                      descricao: 'MASCULINO',
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: CardPadrao(
-                    aoPressionar: () {
-                      setState(() {
-                        sexoSelecionado = Sexo.feminino;
-                      });
-                    },
-                    cor: sexoSelecionado == Sexo.feminino
-                        ? corFemininoAtivaCardPadrao
-                        : corFemininoInativaCardPadrao,
-                    filhoCartao: ConteudoIcone(
-                      icone: FontAwesomeIcons.venus,
-                      descricao: 'FEMININO',
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
           Expanded(
             child: CardPadrao(
               cor: corCardPadrao,
@@ -175,51 +130,6 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                     ),
                   ),
                 ),
-                Expanded(
-                  child: CardPadrao(
-                    cor: corCardPadrao,
-                    filhoCartao: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          'IDADE',
-                          style: descricaoTextStyle,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              idade.toString(),
-                              style: numeroTextStyle,
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            BotaoArredondado(
-                                icone: FontAwesomeIcons.minus,
-                                aoPressionar: () {
-                                  setState(() {
-                                    idade--;
-                                  });
-                                }),
-                            const SizedBox(
-                              width: 10.0,
-                            ),
-                            BotaoArredondado(
-                                icone: FontAwesomeIcons.plus,
-                                aoPressionar: () {
-                                  setState(() {
-                                    idade++;
-                                  });
-                                })
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
               ],
             ),
           ),
@@ -235,6 +145,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                     resultadoIMC: calc.calcularIMC(),
                     resultadoTexto: calc.obterResultado(),
                     interpretacao: calc.obterInterpretacao(),
+                    resultadoImagem: calc.obterCaminhoImagem(),
                   ),
                 ),
               );
