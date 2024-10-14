@@ -235,7 +235,13 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
               margin: const EdgeInsets.only(top: 10),
               width: double.infinity,
               height: alturaContainerInferior,
-              child: const Text('Calcular'),
+              padding: const EdgeInsets.only(bottom: 20.0),
+              child: const Center(
+                child: Text(
+                  'CALCULAR',
+                  style: botaoGrandeTextStyle,
+                ),
+              ),
             ),
           ),
         ],

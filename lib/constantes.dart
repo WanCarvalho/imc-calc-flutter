@@ -10,6 +10,12 @@ const numeroTextStyle = TextStyle(
   fontWeight: FontWeight.w900,
 );
 
+const botaoGrandeTextStyle = TextStyle(
+  fontSize: 25.0,
+  fontWeight: FontWeight.bold,
+  color: Colors.white,
+);
+
 const alturaContainerInferior = 80.0;
 const corCardPadrao = Color(0xFFE9E9E9);
 const corContainerInferior = Color(0xFFFF5822);
