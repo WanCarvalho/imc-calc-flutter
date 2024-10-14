@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:questao_3/tela_resultados.dart';
-import 'card_padrao.dart';
-import 'conteudo_icone.dart';
-import 'constantes.dart';
-import 'botao_arredondado.dart';
+import 'package:questao_3/telas/tela_resultados.dart';
+import '../components/card_padrao.dart';
+import '../components/conteudo_icone.dart';
+import '../constantes.dart';
+import '../components/botao_arredondado.dart';
+import '../components/botao_inferior.dart';
+import '../calculadora_imc.dart';
 
 enum Sexo {
   masculino,
@@ -221,28 +223,22 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
               ],
             ),
           ),
-          GestureDetector(
-            onTap: () {
+          BotaoInferior(
+            tituloBotao: 'CALCULAR',
+            aoPressionar: () {
+              CalculadoraIMC calc = CalculadoraIMC(altura: altura, peso: peso);
+
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => TelaResultados(),
+                  builder: (context) => TelaResultados(
+                    resultadoIMC: calc.calcularIMC(),
+                    resultadoTexto: calc.obterResultado(),
+                    interpretacao: calc.obterInterpretacao(),
+                  ),
                 ),
               );
             },
-            child: Container(
-              color: corContainerInferior,
-              margin: const EdgeInsets.only(top: 10),
-              width: double.infinity,
-              height: alturaContainerInferior,
-              padding: const EdgeInsets.only(bottom: 20.0),
-              child: const Center(
-                child: Text(
-                  'CALCULAR',
-                  style: botaoGrandeTextStyle,
-                ),
-              ),
-            ),
           ),
         ],
       ),
