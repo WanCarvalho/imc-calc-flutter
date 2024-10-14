@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:questao_3/tela_resultados.dart';
 import 'card_padrao.dart';
 import 'conteudo_icone.dart';
 import 'constantes.dart';
@@ -194,17 +195,23 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            BotaoArredondado(icone: FontAwesomeIcons.minus, aoPressionar: (){
-                              setState(() {
-                                idade--;
-                              });
-                            }),
-                            const SizedBox(width: 10.0,),
-                            BotaoArredondado(icone: FontAwesomeIcons.plus, aoPressionar: (){
-                              setState(() {
-                                idade++;
-                              });
-                            })
+                            BotaoArredondado(
+                                icone: FontAwesomeIcons.minus,
+                                aoPressionar: () {
+                                  setState(() {
+                                    idade--;
+                                  });
+                                }),
+                            const SizedBox(
+                              width: 10.0,
+                            ),
+                            BotaoArredondado(
+                                icone: FontAwesomeIcons.plus,
+                                aoPressionar: () {
+                                  setState(() {
+                                    idade++;
+                                  });
+                                })
                           ],
                         ),
                       ],
@@ -214,11 +221,22 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
               ],
             ),
           ),
-          Container(
-            color: corContainerInferior,
-            margin: const EdgeInsets.only(top: 10),
-            width: double.infinity,
-            height: alturaContainerInferior,
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => TelaResultados(),
+                ),
+              );
+            },
+            child: Container(
+              color: corContainerInferior,
+              margin: const EdgeInsets.only(top: 10),
+              width: double.infinity,
+              height: alturaContainerInferior,
+              child: const Text('Calcular'),
+            ),
           ),
         ],
       ),
